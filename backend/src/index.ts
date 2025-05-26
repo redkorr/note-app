@@ -1,7 +1,7 @@
 import express from 'express';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger-output.json';
-
+import routes from './routes/index.js';
 import bodyParser from 'body-parser';
 
 import { PrismaClient } from '../generated/prisma';
@@ -14,11 +14,8 @@ app.use(bodyParser.json());
 const prisma = new PrismaClient();
 
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-//
-// app.get('/db', async (req, res) => {
-//   const count = await prisma.user.count();
-//   res.json({ count });
-// });
+
+app.use('/api', routes);
 
 app.get('/', (req, res) => {
   res.json({ msg: 'Hello World!' });

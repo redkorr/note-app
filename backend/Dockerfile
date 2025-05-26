@@ -10,8 +10,12 @@ COPY . .
 
 RUN npm run prisma
 
+RUN npm run swagger
+
 EXPOSE 3000
 
 RUN npm run build
+
+
 
 CMD [ "node", "dist/index.js" ]
