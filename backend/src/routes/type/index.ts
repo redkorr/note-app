@@ -1,9 +1,9 @@
-import { Router } from 'express';
+import { Router, Request, Response, NextFunction } from 'express';
 import { PrismaClient } from '../../../generated/prisma';
 
 const router = Router();
 
-router.get('/types', async (req, res) => {
+router.get('/', async (req: Request, res: Response, next: NextFunction) => {
   const prisma = new PrismaClient();
 
   try {
@@ -11,7 +11,7 @@ router.get('/types', async (req, res) => {
     res.status(200).json(data);
   } catch (error) {
     if (error) {
-      res.status(500).json({ error: 'Internal Server Error' });
+      next(error);
     }
   }
 });
