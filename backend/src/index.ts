@@ -3,19 +3,18 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger-output.json';
 import routes from './routes/index.js';
 import bodyParser from 'body-parser';
-
-import { PrismaClient } from '../generated/prisma';
+import errorHandler from './middlewares/errorMiddleware.js';
 
 const app = express();
 const PORT = 3000;
 
 app.use(bodyParser.json());
 
-const prisma = new PrismaClient();
-
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use('/api', routes);
+
+app.use(errorHandler);
 
 app.get('/', (req, res) => {
   res.json({ msg: 'Hello World!' });
