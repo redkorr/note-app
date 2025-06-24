@@ -24,6 +24,7 @@ model Project {
   members     String[]
   owner       String
   admins      String[]
+  labels      Label[]
 }
 
 model List {
@@ -68,7 +69,8 @@ model Label {
   updatedAt DateTime @updatedAt
   bgColor   String
   textColor String
-  itemId    String
+  projectId   String
+  Project     Project  @relation(fields: [projectId], references: [id])
 
   Item Item[]
 }
