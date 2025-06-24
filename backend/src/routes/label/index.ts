@@ -28,12 +28,13 @@ router.get(
 
 router.post('/', async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { bgColor, textColor, name } = req.body;
+    const { bgColor, textColor, name, projectId } = req.body;
     await prisma.label.create({
       data: {
         bgColor,
         textColor,
         name,
+        projectId,
       },
     });
     res.status(200).json();
