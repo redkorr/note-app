@@ -35,8 +35,7 @@ model List {
   updatedAt   DateTime @updatedAt
   projectId   String
   items       Item[]
-
-  Project Project[]
+  Project     Project  @relation(fields: [projectId], references: [id])
 }
 
 model Item {
