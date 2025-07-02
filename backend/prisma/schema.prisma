@@ -35,7 +35,7 @@ model List {
   updatedAt   DateTime @updatedAt
   projectId   String
   items       Item[]
-  Project     Project  @relation(fields: [projectId], references: [id])
+  Project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
 }
 
 model Item {
@@ -49,7 +49,7 @@ model Item {
   typeid      String
   label       Label[]
   priority    Int
-  List        List     @relation(fields: [listId], references: [id])
+  List        List     @relation(fields: [listId], references: [id], onDelete: Cascade)
 }
 
 model Type {
@@ -69,7 +69,7 @@ model Label {
   bgColor   String
   textColor String
   projectId   String
-  Project     Project  @relation(fields: [projectId], references: [id])
+  Project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
   Item Item[]
 }
