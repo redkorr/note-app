@@ -26,7 +26,7 @@ router.get(
 
 router.post('/', async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { listId, name, typeid, priority, labels } = req.body;
+    const { listId, name, typeid, priority, labels, description } = req.body;
     let item: Prisma.ItemUncheckedCreateInput;
 
     if (labels) {
@@ -35,6 +35,7 @@ router.post('/', async (req: Request, res: Response, next: NextFunction) => {
         listId,
         typeid,
         priority,
+        description,
         label: {
           connectOrCreate: labels.map(
             (label: Prisma.LabelUncheckedCreateInput) => ({
