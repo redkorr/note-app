@@ -16,8 +16,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "-": "^0.0.1",
     "@prisma/client": "^6.8.1",
+    "cors": "^2.8.5",
     "express": "^5.1.0",
     "prisma": "^6.8.1",
     "swagger-jsdoc": "^6.2.8",

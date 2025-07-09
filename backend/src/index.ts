@@ -5,8 +5,11 @@ import routes from './routes/index.js';
 import bodyParser from 'body-parser';
 import errorHandler from './middlewares/errorMiddleware.js';
 
+const cors = require('cors');
 const app = express();
 const PORT = 3000;
+
+app.use(cors({ credentials: true, origin: true }));
 
 app.use(bodyParser.json());
 
